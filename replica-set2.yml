@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: httpd-rs
+  namespace: test-ns
+  labels:
+    type: webserver
+    author: chaitanya
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: webserver
+      author: chaitanya
+  template:
+      metadata:
+        name: httpd-pod
+        labels:
+          type: webserver
+          author: chaitanya
+      spec:
+        containers:
+          - name: myhttpd
+            image: httpd
+            ports:
+              - containerPort: 80
+                
+
