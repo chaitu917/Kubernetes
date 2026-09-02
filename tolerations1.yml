@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd-pod
+  labels:
+    type: webserver
+spec:
+  containers:
+    - name: httpd
+      image: httpd
+  tolerations:
+    - key: worker
+      operator: Equal
+      value: chaitanya
+      effect: NoSchedule
+...
